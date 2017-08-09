@@ -1,0 +1,44 @@
+<html>
+    <head>
+        <title> Jquery </title> 
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+        
+        <style>
+            .cir {
+                width: 100px;
+                height: 100px;
+                background-color:  aquamarine;
+                border-radius: 50%;
+            }
+            
+            #square { 
+            width: 100px;
+                height: 100px;
+                background-color:  skyblue;
+            }
+        </style>
+    </head>
+    
+    <body>
+        
+        <div id="square"> </div>
+        <div class="cir"> </div>
+        <div class="cir"> </div>
+        
+        <script type="application/javascript">
+            
+            $(".cir").click(clicked);
+        
+            function clicked(){
+                $(this).fadeOut("slow", function() {
+                    $(".cir").fadeIn("slow");
+                });
+            }
+        </script>
+        
+        
+    </body> 
+    
+    
+    
+</html>
