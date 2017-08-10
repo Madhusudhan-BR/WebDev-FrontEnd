@@ -88,16 +88,23 @@
             
         </div>
         
-        <textarea id="htmlArea" class="panel">Hello World</textarea>
+        <textarea id="htmlArea" class="panel"><p>Hello world!</p></textarea>
         <textarea id="cssArea" class="panel hidden">p { color: red; }</textarea>
-        <textarea id="javascriptArea" class="panel hidden"> alert("Hello World!")</textarea>
+        <textarea id="javascriptArea" class="panel hidden"> alert("Hello World!");</textarea>
         
         <iframe id="outputArea" class="panel"></iframe>
         
     </body>
        
     <script type="text/javascript">
+        
+        function update(){
             
+         $("iframe").contents().find("html").html("<html> <head> <style type='text/css'>" + $("#cssArea").val() + "</style></head><body>" + $("#htmlArea").val() + "</body></html>"); 
+            
+            document.getElementById("outputArea").contentWindow.eval($("#javascriptArea").val());
+        }
+        
         $(".toggleButton").hover(function(){
             //hover in 
             
@@ -131,8 +138,12 @@
         
         $("#htmlArea").on('change keyup paste', function() {
     // your code here
-            $("iframe").contents().find("html").html($("#htmlArea").val()); 
-});
+            update(); 
+});  
+        
+        update(); 
+        
+        
          
     </script>
 </html>
